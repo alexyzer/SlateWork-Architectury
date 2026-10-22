@@ -10,4 +10,7 @@ dependencies {
 
     // Fabric API
     modImplementation "net.fabricmc.fabric-api:fabric-api:$rootProject.fabric_api_version+$rootProject.minecraft_version"
+
+    //HexCasting common
+    modImplementation "libs:hexcasting-common-$rootProject.minecraft_version-$rootProject.hexcasting_version"
 }
