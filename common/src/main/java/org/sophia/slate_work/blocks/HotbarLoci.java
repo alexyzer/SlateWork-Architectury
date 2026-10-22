@@ -8,10 +8,8 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.nbt.NbtHelper;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.ActionResult;
-import net.minecraft.util.Hand;
 import net.minecraft.util.ItemScatterer;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
@@ -25,9 +23,6 @@ import org.sophia.slate_work.blocks.entities.HotbarLociEntity;
 import org.sophia.slate_work.registries.SlateWorksImageComponents;
 
 import static at.petrak.hexcasting.common.blocks.circles.BlockSlate.*;
-import static at.petrak.hexcasting.common.blocks.circles.BlockSlate.AABB_NORTH_WALL;
-import static at.petrak.hexcasting.common.blocks.circles.BlockSlate.AABB_SOUTH_WALL;
-import static at.petrak.hexcasting.common.blocks.circles.BlockSlate.AABB_WEST_WALL;
 
 public class HotbarLoci extends AbstractSlate implements BlockEntityProvider {
     public HotbarLoci(Settings p_49795_) {

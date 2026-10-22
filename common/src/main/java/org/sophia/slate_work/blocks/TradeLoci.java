@@ -6,7 +6,6 @@ import at.petrak.hexcasting.api.casting.iota.DoubleIota;
 import at.petrak.hexcasting.common.blocks.circles.directrix.BlockBooleanDirectrix;
 import com.mojang.datafixers.util.Pair;
 import kotlin.jvm.optionals.OptionalsKt;
-import net.fabricmc.fabric.api.transfer.v1.item.ItemStorage;
 import net.fabricmc.fabric.api.transfer.v1.item.ItemVariant;
 import net.fabricmc.fabric.api.transfer.v1.transaction.Transaction;
 import net.minecraft.block.BlockEntityProvider;

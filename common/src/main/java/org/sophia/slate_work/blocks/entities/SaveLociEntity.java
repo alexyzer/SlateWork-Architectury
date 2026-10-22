@@ -6,7 +6,6 @@ import net.minecraft.block.BlockState;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtOps;
 import net.minecraft.registry.RegistryWrapper;
-import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
 import org.sophia.slate_work.registries.SlateWorksBlockRegistry;
 

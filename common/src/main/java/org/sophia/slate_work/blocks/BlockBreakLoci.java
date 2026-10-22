@@ -8,10 +8,7 @@ import at.petrak.hexcasting.api.utils.TreeList;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.component.ComponentChanges;
-import net.minecraft.component.ComponentType;
 import net.minecraft.component.DataComponentTypes;
-import net.minecraft.component.type.ItemEnchantmentsComponent;
-import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
@@ -31,8 +28,6 @@ import org.sophia.slate_work.blocks.entities.BlockBreakLociEntity;
 import org.sophia.slate_work.casting.mishap.MishapSpellCircleNotEnoughArgs;
 import org.sophia.slate_work.registries.SlateWorksBlockRegistry;
 import org.sophia.slate_work.registries.SlateWorksPatternRegistry;
-
-import java.util.ArrayList;
 
 public class BlockBreakLoci extends AbstractSlate implements BlockEntityProvider {
     public static final int DISTANCE = 6;

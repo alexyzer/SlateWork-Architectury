@@ -1,9 +1,6 @@
 package org.sophia.slate_work.blocks.entities;
 
-import at.petrak.hexcasting.api.utils.NBTHelper;
 import com.google.common.collect.Sets;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.ListCodec;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;

@@ -4,8 +4,6 @@ import at.petrak.hexcasting.api.block.HexBlockEntity;
 import net.minecraft.block.BlockState;
 import net.minecraft.component.type.ItemEnchantmentsComponent;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.nbt.NbtElement;
-import net.minecraft.nbt.NbtList;
 import net.minecraft.nbt.NbtOps;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.util.math.BlockPos;

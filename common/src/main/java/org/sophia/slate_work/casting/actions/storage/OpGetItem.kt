@@ -1,6 +1,5 @@
 package org.sophia.slate_work.casting.actions.storage
 
-import at.petrak.hexcasting.api.casting.*
 import at.petrak.hexcasting.api.casting.castables.Action
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.eval.OperationResult
@@ -16,7 +15,6 @@ import at.petrak.hexcasting.api.casting.mishaps.MishapNotEnoughMedia
 import at.petrak.hexcasting.api.casting.mishaps.circle.MishapNoSpellCircle
 import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.common.lib.hex.HexEvalSounds
-import gay.`object`.ioticblocks.utils.mishapBadEntityOrBlock
 import net.minecraft.text.Text
 import org.sophia.slate_work.casting.contuinations.FrameGetItems
 import org.sophia.slate_work.casting.contuinations.JankyMaybe

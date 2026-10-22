@@ -16,8 +16,6 @@ import org.sophia.slate_work.registries.SlateWorksBlockRegistry;
 import org.sophia.slate_work.registries.SlateWorksComponents;
 import org.sophia.slate_work.storage.SlateFakePlayer;
 
-import java.util.UUID;
-
 public class SlateWorksTrinkets {
     public static void init(){
         TrinketsApi.registerTrinket(SlateWorksBlockRegistry.WHISPERING_STONE,

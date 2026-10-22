@@ -8,7 +8,6 @@ import org.jetbrains.annotations.Nullable;
 import org.sophia.slate_work.blocks.impetus.ListeningImpetusEntity;
 import org.sophia.slate_work.compat.SlateWorksTrinkets;
 import org.sophia.slate_work.registries.SlateWorksAttributeRegistry;
-import org.sophia.slate_work.registries.SlateWorksBlockRegistry;
 import org.sophia.slate_work.registries.SlateWorksComponents;
 import org.sophia.slate_work.saving.Listeners;
 

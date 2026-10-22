@@ -9,7 +9,6 @@ import net.minecraft.recipe.input.CraftingRecipeInput;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.Slot;
 import net.minecraft.screen.slot.SlotActionType;
-import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.sophia.slate_work.blocks.entities.CraftingLociEntity;

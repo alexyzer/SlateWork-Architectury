@@ -13,7 +13,6 @@ import net.minecraft.nbt.NbtList;
 import net.minecraft.nbt.NbtOps;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.util.Pair;
-import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -21,7 +20,6 @@ import org.jetbrains.annotations.UnmodifiableView;
 import org.sophia.slate_work.storage.LociIterator;
 import org.sophia.slate_work.storage.StorageLociSlot;
 
-import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 

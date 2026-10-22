@@ -2,9 +2,7 @@ package org.sophia.slate_work.mixins;
 
 import at.petrak.hexcasting.api.casting.circles.ICircleComponent;
 import at.petrak.hexcasting.api.casting.eval.env.CircleCastEnv;
-import at.petrak.hexcasting.api.casting.eval.sideeffects.OperatorSideEffect;
 import at.petrak.hexcasting.api.casting.eval.vm.CastingImage;
-import at.petrak.hexcasting.api.casting.eval.vm.CastingVM;
 import at.petrak.hexcasting.api.casting.mishaps.Mishap;
 import com.llamalad7.mixinextras.sugar.Local;
 import net.minecraft.block.BlockState;
@@ -13,7 +11,6 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
 @Mixin(ICircleComponent.class)
 public interface MixinICircleComponent {

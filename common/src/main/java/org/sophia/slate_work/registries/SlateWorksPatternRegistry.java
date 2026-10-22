@@ -14,7 +14,6 @@ import net.minecraft.block.BlockState;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Vec3d;
-import org.apache.commons.codec.binary.Hex;
 import org.sophia.slate_work.casting.actions.*;
 import org.sophia.slate_work.casting.actions.hotbar.OpGetItems;
 import org.sophia.slate_work.casting.actions.hotbar.OpSetSlot;

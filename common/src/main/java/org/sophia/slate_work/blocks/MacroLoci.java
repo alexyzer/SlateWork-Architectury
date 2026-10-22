@@ -14,7 +14,6 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NbtElement;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
@@ -35,9 +34,6 @@ import org.sophia.slate_work.registries.SlateWorksImageComponents;
 import java.util.HashMap;
 
 import static at.petrak.hexcasting.common.blocks.circles.BlockSlate.*;
-import static at.petrak.hexcasting.common.blocks.circles.BlockSlate.AABB_NORTH_WALL;
-import static at.petrak.hexcasting.common.blocks.circles.BlockSlate.AABB_SOUTH_WALL;
-import static at.petrak.hexcasting.common.blocks.circles.BlockSlate.AABB_WEST_WALL;
 
 @SuppressWarnings("deprecation")
 public class MacroLoci extends AbstractSlate implements BlockEntityProvider {
