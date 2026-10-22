@@ -30,6 +30,9 @@ dependencies {
     // Fabric API
     modImplementation "net.fabricmc.fabric-api:fabric-api:$rootProject.fabric_api_version+$rootProject.minecraft_version"
 
+    //Fabric Language Kotlin
+    implementation("net.fabricmc:fabric-language-kotlin:$rootProject.kotlin_fabric_version")
+
     common(project(path: ':common', configuration: 'namedElements')) { transitive = false }
     shadowBundle project(path: ':common', configuration: 'transformProductionFabric')
 }
