@@ -66,6 +66,11 @@ subprojects {
 
         //Cloth Config
         maven { url "https://maven.shedaniel.me/" }
+
+        //IoticBlocks
+        repositories {
+            maven { url = uri("https://maven.blamejared.com") }
+        }
     }
 
     dependencies {

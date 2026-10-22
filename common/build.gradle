@@ -29,4 +29,10 @@ dependencies {
 
     //Cloth Config common
     modImplementation("me.shedaniel.cloth:cloth-config:$rootProject.cloth_config_version")
+
+    //IoticBlocks (old api)
+    modImplementation("gay.object.ioticblocks:ioticblocks-common:$rootProject.ioticblocks_version") {
+        //Prevent old dependency pollution
+        transitive = false
+    }
 }
