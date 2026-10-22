@@ -1,0 +1,92 @@
+package org.sophia.slate_work.storage;
+
+import net.fabricmc.fabric.api.transfer.v1.item.ItemVariant;
+import net.fabricmc.fabric.api.transfer.v1.storage.StorageView;
+import net.fabricmc.fabric.api.transfer.v1.storage.base.SingleSlotStorage;
+import net.fabricmc.fabric.api.transfer.v1.transaction.TransactionContext;
+import net.fabricmc.fabric.api.transfer.v1.transaction.base.SnapshotParticipant;
+import org.sophia.slate_work.blocks.entities.StorageLociEntity;
+
+public class StorageLociSlot extends SnapshotParticipant<StorageLociSlot> implements SingleSlotStorage<ItemVariant>, StorageView<ItemVariant> {
+    protected final StorageLociEntity parent;
+    protected final int slot;
+    protected ItemVariant variant;
+    protected long count;
+
+
+    public StorageLociSlot(StorageLociEntity parent, int slot){
+        this.parent = parent;
+        this.slot = slot;
+        this.variant = ItemVariant.blank();
+        this.count = 0;
+    }
+
+    public StorageLociSlot(StorageLociEntity parent, int slot, ItemVariant variant, long count){
+        this.parent = parent;
+        this.slot = slot;
+        this.variant = variant;
+        this.count = count;
+    }
+
+    @Override
+    public StorageLociSlot createSnapshot() {
+        return new StorageLociSlot(this.parent, this.slot, this.variant, this.count);
+    }
+
+    @Override
+    protected void readSnapshot(StorageLociSlot snapshot) {
+        this.variant = snapshot.variant;
+        this.count = snapshot.count;
+    }
+
+    @Override
+    protected void onFinalCommit() {
+        this.parent.setStack(this.slot, this.variant, this.count);
+    }
+
+
+    @Override
+    public long insert(ItemVariant resource, long maxAmount, TransactionContext transaction) {
+        if (resource.equals(this.variant) || this.isResourceBlank()) {
+            updateSnapshots(transaction);
+            // We do this in case we are inserting into a blank slot
+            this.variant = resource;
+            this.count += maxAmount;
+            return maxAmount;
+        }
+
+        return 0;
+    }
+
+    @Override
+    public long extract(ItemVariant resource, long maxAmount, TransactionContext transaction) {
+        if (resource.equals(this.variant) && this.count > 0) {
+            updateSnapshots(transaction);
+            long ret = Math.min(maxAmount, this.count);
+            this.count -= ret;
+            return ret;
+        }
+
+        return 0;
+    }
+
+    @Override
+    public boolean isResourceBlank() {
+        return this.count <= 0 || this.variant.isBlank();
+    }
+
+    @Override
+    public ItemVariant getResource() {
+        return this.variant;
+    }
+
+    @Override
+    public long getAmount() {
+        return this.count;
+    }
+
+    @Override
+    public long getCapacity() {
+        return Long.MAX_VALUE;
+    }
+}

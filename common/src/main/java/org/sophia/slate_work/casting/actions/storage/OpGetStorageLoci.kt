@@ -1,0 +1,39 @@
+package org.sophia.slate_work.casting.actions.storage
+
+import at.petrak.hexcasting.api.casting.castables.Action
+import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
+import at.petrak.hexcasting.api.casting.eval.OperationResult
+import at.petrak.hexcasting.api.casting.eval.env.CircleCastEnv
+import at.petrak.hexcasting.api.casting.eval.vm.CastingImage
+import at.petrak.hexcasting.api.casting.eval.vm.SpellContinuation
+import at.petrak.hexcasting.api.casting.iota.Iota
+import at.petrak.hexcasting.api.casting.iota.ListIota
+import at.petrak.hexcasting.api.casting.iota.Vec3Iota
+import at.petrak.hexcasting.api.casting.mishaps.circle.MishapNoSpellCircle
+import at.petrak.hexcasting.common.lib.hex.HexEvalSounds
+import net.minecraft.nbt.NbtCompound
+import net.minecraft.nbt.NbtElement
+import net.minecraft.nbt.NbtHelper
+import net.minecraft.nbt.NbtIntArray
+import net.minecraft.util.math.BlockPos
+import net.minecraft.util.math.Vec3d
+import org.sophia.slate_work.registries.SlateWorksImageComponents
+
+object OpGetStorageLoci : Action {
+    override fun operate(env: CastingEnvironment, image: CastingImage, continuation: SpellContinuation): OperationResult {
+        if (env !is CircleCastEnv)
+            throw MishapNoSpellCircle()
+        var stack = image.stack
+        val list: ArrayList<Vec3Iota> = ArrayList()
+        env.circleState().currentImage.getComponent(SlateWorksImageComponents.STORAGE_LOCI)?.let {
+            for (pos in it){
+                list.add(Vec3Iota(pos.toCenterPos()))
+            }
+        }
+
+        stack = stack.appended(ListIota(list as List<Iota>))
+        val image2 = image.withUsedOp().copy(stack = stack)
+
+        return OperationResult(image2, listOf(),continuation, HexEvalSounds.NORMAL_EXECUTE.get())
+    }
+}
