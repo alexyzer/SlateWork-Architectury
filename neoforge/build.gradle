@@ -43,6 +43,9 @@ dependencies {
     //HexCasting neoforge
     implementation rootProject.files("libs/hexcasting-neoforge-$rootProject.minecraft_version-${rootProject.hexcasting_version}.jar")
 
+    //Cloth Config NeoForge
+    implementation("me.shedaniel.cloth:cloth-config-neoforge:$rootProject.cloth_config_version")
+
     common(project(path: ':common', configuration: 'namedElements')) { transitive = false }
     shadowBundle project(path: ':common', configuration: 'transformProductionNeoForge')
 }

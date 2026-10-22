@@ -21,6 +21,8 @@ dependencies {
     }
 
     //Trinkets (optional support)
-    modImplementation "dev.emi:trinkets:${rootProject.trinkets_version}"
     modImplementation "dev.emi:trinkets:$rootProject.trinkets_version"
+
+    //Cloth Config common
+    modImplementation("me.shedaniel.cloth:cloth-config:$rootProject.cloth_config_version")
 }

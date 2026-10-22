@@ -63,6 +63,9 @@ subprojects {
             name = "Ladysnake Libs"
             url = 'https://maven.ladysnake.org/releases'
         }
+
+        //Cloth Config
+        maven { url "https://maven.shedaniel.me/" }
     }
 
     dependencies {
