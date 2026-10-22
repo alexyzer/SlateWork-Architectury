@@ -38,11 +38,6 @@ subprojects {
         // See https://docs.gradle.org/current/userguide/declaring_repositories.html
         // for more information about repositories.
 
-        //Dependencies from libs folder
-        flatDir {
-            dir(rootProject.file("libs"))
-        }
-
         //Forgified Fabric API
         maven {
             url "https://maven.su5ed.dev/releases"
