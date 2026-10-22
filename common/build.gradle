@@ -19,4 +19,8 @@ dependencies {
         //Prevent old dependency pollution
         transitive = false
     }
+
+    //Trinkets (optional support)
+    modImplementation "dev.emi:trinkets:${rootProject.trinkets_version}"
+    modImplementation "dev.emi:trinkets:$rootProject.trinkets_version"
 }

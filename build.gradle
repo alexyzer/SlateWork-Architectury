@@ -53,6 +53,16 @@ subprojects {
         maven {
             url = uri("https://maven.hexxy.media")
         }
+
+        //Trinkets
+        maven {
+            name = "Sleeping Town"
+            url = "https://repo.sleeping.town/"
+        }
+        maven {
+            name = "Ladysnake Libs"
+            url = 'https://maven.ladysnake.org/releases'
+        }
     }
 
     dependencies {
