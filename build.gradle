@@ -48,6 +48,11 @@ subprojects {
             name = 'Kotlin for Forge'
             url = 'https://thedarkcolour.github.io/KotlinForForge/'
         }
+
+        //Old MoreIotas
+        maven {
+            url = uri("https://maven.hexxy.media")
+        }
     }
 
     dependencies {

@@ -13,4 +13,10 @@ dependencies {
 
     //HexCasting common
     modImplementation rootProject.files("libs/hexcasting-common-$rootProject.minecraft_version-${rootProject.hexcasting_version}.jar")
+
+    //MoreIotas (old version for API)
+    modImplementation("ram.talia.moreiotas:moreiotas-fabric-1.20.1:0.1.1") {
+        //Prevent old dependency pollution
+        transitive = false
+    }
 }
