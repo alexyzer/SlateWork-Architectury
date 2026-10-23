@@ -7,7 +7,6 @@ import at.petrak.hexcasting.interop.HexInterop;
 import com.mojang.serialization.Codec;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.JanksonConfigSerializer;
-import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.attachment.v1.AttachmentRegistry;
 import net.fabricmc.fabric.api.attachment.v1.AttachmentType;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
@@ -37,8 +36,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
-@SuppressWarnings("UnstableApiUsage")
-public class Slate_work implements ModInitializer {
+public final class Slate_work {
     public static final String MOD_ID = "slate_work";
     public static final Logger LOGGER = Logger.getLogger("Slate Works");
     public static final AttachmentType<List<BlockPos>> chunk_listeners = AttachmentRegistry.<List<BlockPos>>builder()
@@ -57,8 +55,9 @@ public class Slate_work implements ModInitializer {
     public static final BooleanProperty IS_OPTIONAL_VECTOR = BooleanProperty.of("is_optional");
     public static final BooleanProperty IS_LEFT_CLICKING = BooleanProperty.of("is_left_clicking");
 
-    @Override
-    public void onInitialize() {
+    public static void init() {
+        // Write common init code here.
+
         AutoConfig.register(SlateWorkConfig.class, JanksonConfigSerializer::new);
 
         SlateWorksBlockRegistry.init();
@@ -71,40 +70,40 @@ public class Slate_work implements ModInitializer {
         ItemStorage.SIDED.registerSelf(SlateWorksBlockRegistry.STORAGE_LOCI_ENTITY);
         ItemStorage.SIDED.registerSelf(SlateWorksBlockRegistry.HOTBAR_LOCI_ENTITY);
 
-        CastingEnvironment.addCreateEventListener( (a,b) -> a.addExtension(new CircleAmbitChanges(a)));
+        CastingEnvironment.addCreateEventListener( (a, b) -> a.addExtension(new CircleAmbitChanges(a)));
 
-        ServerLifecycleEvents.SERVER_STOPPING.register(new ClearBroadcasters());
-            ServerMessageEvents.ALLOW_CHAT_MESSAGE.register((message, sender, params) ->{
-                    var z = ChatHelper.getHelper().willBlock(message.getSignedContent(), sender);
-                    if (z.entity().isPresent()){
-                        var entity = z.entity().get();
-                        String string = z.string().substring(entity.getString().length()).stripLeading();
-                        if (string.isBlank()) string = " ";
-                        entity.setIotas(new EntityIota(sender), StringIota.makeUnchecked(string));
-                        entity.startExecution(sender);
-                        entity.sync();
-                    }
-                    if (!z.failed() && z.blocked()) {
-                        if (z.item() && z.entity().isEmpty()) {
-                            sender.playSoundToPlayer(HexSounds.FLIGHT_FINISH.value(), SoundCategory.PLAYERS, 1f, 1.5f);
-                        }
-                        else {
-                            sender.playSoundToPlayer(HexSounds.READ_LORE_FRAGMENT.value(), SoundCategory.PLAYERS, 1f, 2f);
-                        }
-                    } else if (z.failed() && z.whispering().isPresent() && z.entity().isEmpty() && z.blocked()) {
-                        var stack = z.whispering().get();
-                        SlateWorksComponents.WhisperingStoneComponent component = stack.get(SlateWorksComponents.WHISPERING_STONE_COMPONENT);
+        ServerLifecycleEvents.SERVER_STOPPING.register(new Slate_work.ClearBroadcasters());
+        ServerMessageEvents.ALLOW_CHAT_MESSAGE.register((message, sender, params) ->{
+            var z = ChatHelper.getHelper().willBlock(message.getSignedContent(), sender);
+            if (z.entity().isPresent()){
+                var entity = z.entity().get();
+                String string = z.string().substring(entity.getString().length()).stripLeading();
+                if (string.isBlank()) string = " ";
+                entity.setIotas(new EntityIota(sender), StringIota.makeUnchecked(string));
+                entity.startExecution(sender);
+                entity.sync();
+            }
+            if (!z.failed() && z.blocked()) {
+                if (z.item() && z.entity().isEmpty()) {
+                    sender.playSoundToPlayer(HexSounds.FLIGHT_FINISH.value(), SoundCategory.PLAYERS, 1f, 1.5f);
+                }
+                else {
+                    sender.playSoundToPlayer(HexSounds.READ_LORE_FRAGMENT.value(), SoundCategory.PLAYERS, 1f, 2f);
+                }
+            } else if (z.failed() && z.whispering().isPresent() && z.entity().isEmpty() && z.blocked()) {
+                var stack = z.whispering().get();
+                SlateWorksComponents.WhisperingStoneComponent component = stack.get(SlateWorksComponents.WHISPERING_STONE_COMPONENT);
 
-                        if (component != null && component.dim().equals(sender.getWorld().getRegistryKey().getValue())) {
-                            sender.playSoundToPlayer(HexSounds.CAST_FAILURE.value(), SoundCategory.PLAYERS, 1f, 1f);
-                            stack.remove(SlateWorksComponents.WHISPERING_STONE_COMPONENT);
-                        } else {
-                            sender.playSoundToPlayer(HexSounds.SCROLL_SCRIBBLE.value(), SoundCategory.PLAYERS, 1f, 1f);
-                        }
+                if (component != null && component.dim().equals(sender.getWorld().getRegistryKey().getValue())) {
+                    sender.playSoundToPlayer(HexSounds.CAST_FAILURE.value(), SoundCategory.PLAYERS, 1f, 1f);
+                    stack.remove(SlateWorksComponents.WHISPERING_STONE_COMPONENT);
+                } else {
+                    sender.playSoundToPlayer(HexSounds.SCROLL_SCRIBBLE.value(), SoundCategory.PLAYERS, 1f, 1f);
+                }
 
-                    }
-                    return !z.blocked();
-            });
+            }
+            return !z.blocked();
+        });
 
 
         if (FabricLoader.getInstance().isModLoaded("ioticblocks")) {

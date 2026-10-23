@@ -2,9 +2,9 @@ package org.sophia.slate_work.fabric;
 
 import net.fabricmc.api.ModInitializer;
 
-import org.sophia.slate_work.ExampleMod;
+import org.sophia.slate_work.Slate_work;
 
-public final class ExampleModFabric implements ModInitializer {
+public final class Slate_workFabric implements ModInitializer {
     @Override
     public void onInitialize() {
         // This code runs as soon as Minecraft is in a mod-load-ready state.
@@ -12,6 +12,6 @@ public final class ExampleModFabric implements ModInitializer {
         // Proceed with mild caution.
 
         // Run our common setup.
-        ExampleMod.init();
+        Slate_work.init();
     }
 }
