@@ -40,11 +40,25 @@ dependencies {
     //Kotlin for Forge
     implementation "thedarkcolour:kotlinforforge-neoforge:$rootProject.kotlin_forge_version"
 
-    //HexCasting neoforge
+    //Cloth Config NeoForge
+    implementation "me.shedaniel.cloth:cloth-config-neoforge:$rootProject.cloth_config_version"
+
+    //Hex Casting neoforge
     implementation rootProject.files("libs/hexcasting-neoforge-$rootProject.minecraft_version-${rootProject.hexcasting_version}.jar")
 
-    //Cloth Config NeoForge
-    implementation("me.shedaniel.cloth:cloth-config-neoforge:$rootProject.cloth_config_version")
+
+    //RUNTIME DEPENDENCIES
+
+    //Hex Casting runtime dependencies
+    /*Kotlin for Forge*/ runtimeOnly "thedarkcolour:kotlinforforge:$rootProject.kotlin_forge_version"
+    /*Paucal  * * * * */ runtimeOnly "at.petra-k:paucal:$rootProject.paucal_version+$rootProject.minecraft_version-neoforge"
+    /*Patchouli * * * */ runtimeOnly "vazkii.patchouli:Patchouli:$rootProject.minecraft_version-$rootProject.patchouli_version-NEOFORGE-SNAPSHOT"
+    /*Caelus API  * * */ runtimeOnly "com.illusivesoulworks.caelus:caelus-neoforge:$rootProject.caelus_version+$rootProject.minecraft_version"
+    /*Inline  * * * * */ runtimeOnly "com.samsthenerd.inline:inline-neoforge:$rootProject.minecraft_version-$rootProject.inline_version"
+
+    //Inline dependency
+    /*Cloth Config  * */ runtimeOnly "me.shedaniel.cloth:cloth-config-neoforge:$rootProject.cloth_config_version"
+
 
     common(project(path: ':common', configuration: 'namedElements')) { transitive = false }
     shadowBundle project(path: ':common', configuration: 'transformProductionNeoForge')

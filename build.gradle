@@ -67,9 +67,15 @@ subprojects {
         //Cloth Config
         maven { url "https://maven.shedaniel.me/" }
 
-        //IoticBlocks
+        //Patchouli, Inline and IoticBlocks
         repositories {
             maven { url = uri("https://maven.blamejared.com") }
+        }
+
+        //Caeulus API
+        maven {
+            name = "C4's Maven"
+            url = "https://maven.theillusivec4.top/"
         }
     }
 
